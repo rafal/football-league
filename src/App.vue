@@ -1,22 +1,34 @@
 <template>
-  <div class="welcomeMessage">
-    Hi there 👋, <br /><br />      
-    Welcome to your test task. <br /><br />
-    Before you begin make sure to read the README file from the repository to make sure that your environment is properly set up. <br /><br />
-    Also please make sure to read the challenge instructions carefully. We advice that you push your source code to the repository frequently to avoid any loss of work.<br />
-    Once you are ready to submit the work, just go back to the challenge instructions page and click the "Submit Challenge" button.<br /><br />      
-    Good Luck and Have Fun! 🤞<br /><br /><br /><br />
-    <em><strong>NOTE:</strong> This page is only a welcome message and you should overwrite this page with the actuall solution implementation.</em>
-  </div>
+  <PageHeader />
+  <main class="content">
+    <router-view></router-view>
+  </main>
+  <PageFooter />
 </template>
+<script>
+import PageHeader from "./components/PageHeader.vue";
+import PageFooter from "./components/PageFooter.vue";
 
+export default {
+  name: "App",
+  components: {
+    PageHeader,
+    PageFooter,
+  },
+};
+</script>
 <style>
 @import "./index.css";
 
-.welcomeMessage {
-  margin: 120px auto;
-  width: 50%;
-  text-align: left;
-  font-size: 24px;
+.content {
+  flex: 1; /* Allows content to expand and push the footer down */
+  width: 90%;
+  margin: 0 auto;
+
+  h1 {
+    margin: 60px auto 20px;
+    font-size: 24px;
+    text-align: center;
+  }
 }
 </style>
