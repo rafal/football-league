@@ -8,12 +8,18 @@
 <script>
 import PageHeader from "./components/PageHeader.vue";
 import PageFooter from "./components/PageFooter.vue";
+import { provide } from "vue";
+import { useLeagueData } from "@/composables/useLeagueData";
 
 export default {
   name: "App",
   components: {
     PageHeader,
     PageFooter,
+  },
+  setup() {
+    const leagueData = useLeagueData();
+    provide("leagueData", leagueData);
   },
 };
 </script>

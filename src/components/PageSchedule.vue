@@ -5,7 +5,7 @@
 
 <script>
 import PageScheduleTable from "@/components/PageScheduleTable.vue";
-import LeagueService from "@/services/LeagueService";
+import { inject } from "vue";
 
 export default {
   name: "PageSchedule",
@@ -18,9 +18,11 @@ export default {
     };
   },
   async created() {
-    const leagueService = new LeagueService();
-    await leagueService.fetchData();
-    this.matches = leagueService.getMatches();
+    const leagueData = inject("leagueData");
+    if (!leagueData.matches.length) {
+      await leagueData.fetchData();
+    }
+    this.matches = leagueData.matches;
   },
 };
 </script>

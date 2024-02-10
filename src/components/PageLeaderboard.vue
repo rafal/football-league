@@ -5,7 +5,7 @@
 
 <script>
 import PageLeaderboardTable from "@/components/PageLeaderboardTable.vue";
-import LeagueService from "@/services/LeagueService";
+import { inject } from "vue";
 
 export default {
   name: "PageLeaderboard",
@@ -18,9 +18,11 @@ export default {
     };
   },
   async created() {
-    const leagueService = new LeagueService();
-    await leagueService.fetchData();
-    this.teams = leagueService.getLeaderboard();
+    const leagueData = inject("leagueData");
+    if (!leagueData.teams.length) {
+      await leagueData.fetchData();
+    }
+    this.teams = leagueData.teams;
   },
 };
 </script>
