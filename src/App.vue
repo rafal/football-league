@@ -1,6 +1,7 @@
 <template>
   <PageHeader />
   <main class="content">
+    <h1>{{ $route.meta.title }}</h1>
     <router-view></router-view>
   </main>
   <PageFooter />
