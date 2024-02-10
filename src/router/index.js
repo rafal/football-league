@@ -1,13 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 import PageSchedule from "@/components/PageSchedule.vue";
-import PageLeaderboard from "@/components/PageLeaderboard.vue";
-import PageNotFound from "@/components/PageNotFound.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: PageSchedule,
+    meta: { title: "League Schedule" },
   },
   {
     path: "/schedule",
@@ -18,13 +17,13 @@ const routes = [
   {
     path: "/leaderboard",
     name: "Leaderboard",
-    component: PageLeaderboard,
+    component: () => import("@/components/PageLeaderboard.vue"),
     meta: { title: "League Standings" },
   },
   {
     path: "/:catchAll(.*)",
     name: "NotFound",
-    component: PageNotFound,
+    component: () => import("@/components/PageNotFound.vue"),
   },
 ];
 
